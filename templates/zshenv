@@ -80,8 +80,12 @@ pyenv() {
 }
 
 # JENV
+path_to_jenv=$(which jenv)
+if [ ! -x "$path_to_jenv" ]; then
+  PATH="$HOME/.jenv/bin:$PATH"
+fi
 if [[ ":$PATH:" != *":$HOME/.jenv/shims:"* ]]; then
-  eval "$($HOME/.jenv/bin/jenv init - --no-rehash)"
+  eval "$(jenv init - --no-rehash)"
   (jenv rehash &) 2> /dev/null
 fi
 
