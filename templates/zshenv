@@ -51,12 +51,17 @@ export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
 # PATH #
 ########
 # HOMEBREW PATH
+{% if homebrew_bin_path is defined %}
 if [[ ":$PATH:" != *":{{ homebrew_bin_path }}:"* ]]; then
   PATH={{ homebrew_bin_path }}:$PATH
 fi
+{% endif %}
+
+{% if homebrew_path is defined %}
 if [[ ":$PATH:" != *":{{ homebrew_path }}/sbin:"* ]]; then
   PATH={{ homebrew_path }}/sbin:$PATH
 fi
+{% endif %}
 
 # GO PATH
 if [[ ":$PATH:" != *":$HOME/go/bin:"* ]]; then
@@ -127,8 +132,8 @@ export LC_ALL=en_US.UTF-8
 unsetopt CORRECT_ALL
 
 # Syntax
-if [[ -f {{ homebrew_path }}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  source {{ homebrew_path }}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -f {{ zsh_syntax_highlighting_dir }}/zsh-syntax-highlighting.zsh ]]; then
+  source {{ zsh_syntax_highlighting_dir }}/zsh-syntax-highlighting.zsh
 fi
 
 #########

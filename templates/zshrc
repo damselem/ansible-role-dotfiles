@@ -4,7 +4,9 @@
 # COMPLETIONS #
 ###############
 # Load ZSH completion functions
-fpath=({{ homebrew_path }}/share/zsh-completions $fpath)
+{% if zsh_completions_dir is defined %}
+fpath=({{ zsh_completions_dir }} $fpath)
+{% endif %}
 
 # Completion
 autoload -U compinit

@@ -1,4 +1,11 @@
 ---
+- name: Verify required variables are defined
+  fail:
+    msg: "Required variable is not defined"
+  when: item is not defined
+  with_items:
+    - zsh_syntax_highlighting_dir
+
 - name: Set primary user shell
   user:
     name: "{{ ansible_user_id }}"
