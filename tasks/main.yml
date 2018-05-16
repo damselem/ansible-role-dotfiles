@@ -77,3 +77,9 @@
   git:
     repo: https://github.com/tmux-plugins/tpm
     dest: "{{ tmux_target_dir }}/plugins/tpm"
+
+- name: Install jenv
+  git:
+    repo: https://github.com/gcuisinier/jenv.git
+    dest: "{{ ansible_env.HOME }}/.jenv"
+  when: ansible_os_family == 'Debian'
