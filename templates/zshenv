@@ -135,11 +135,6 @@ export LC_ALL=en_US.UTF-8
 # Disable autocorrection
 unsetopt CORRECT_ALL
 
-# Syntax
-if [[ -f {{ zsh_syntax_highlighting_dir }}/zsh-syntax-highlighting.zsh ]]; then
-  source {{ zsh_syntax_highlighting_dir }}/zsh-syntax-highlighting.zsh
-fi
-
 #########
 # ALIAS #
 #########
