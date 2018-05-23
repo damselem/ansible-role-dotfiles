@@ -13,6 +13,7 @@ set colorcolumn=80 " Display vertical column at 80 characters
 set completeopt=menu,menuone
 set encoding=utf-8
 set expandtab
+set hidden
 set hlsearch " Highlight search matches
 set ignorecase " Case-insensitive searching
 set laststatus=2
@@ -96,6 +97,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'
 
 " Color scheme
 Plug 'altercation/vim-colors-solarized'
@@ -107,6 +109,8 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -122,6 +126,19 @@ endif
 let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.DS_Store$']
+
+" Rust
+let g:racer_cmd = "{{ ansible_env.HOME }}/.cargo/bin/racer"
+let g:rustfmt_autosave = 1
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Misc
 let g:SuperTabDefaultCompletionType = "context"
