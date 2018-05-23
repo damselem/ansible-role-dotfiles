@@ -42,7 +42,9 @@ source "${HOME}/.zgen/zgen.zsh"
 if ! zgen saved; then
   zgen load "mafredri/zsh-async"
   zgen load "sindresorhus/pure"
+{% if homebrew_bin_path is defined %}
   zgen load "vasyharan/zsh-brew-services"
+{% endif %}
   zgen load "zsh-users/zsh-completions"
   zgen load "felixr/docker-zsh-completion"
   zgen load "zsh-users/zsh-syntax-highlighting"
