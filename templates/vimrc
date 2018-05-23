@@ -132,7 +132,7 @@ let g:racer_cmd = "{{ ansible_env.HOME }}/.cargo/bin/racer"
 let g:rustfmt_autosave = 1
 
 " Syntastic
-let g:syntastic_rust_checkers = ['rust']
+let g:syntastic_rust_checkers = ['rustc']
 
 " Misc
 let g:SuperTabDefaultCompletionType = "context"
