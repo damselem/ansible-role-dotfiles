@@ -102,16 +102,6 @@ Plug 'vim-syntastic/syntastic'
 " Color scheme
 Plug 'altercation/vim-colors-solarized'
 
-" Filetype
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'ekalinin/Dockerfile.vim', { 'for' : 'Dockerfile'}
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'klen/python-mode', { 'for': 'python' }
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -127,19 +117,9 @@ let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.DS_Store$']
 
-" Rust
-let g:racer_cmd = "{{ ansible_env.HOME }}/.cargo/bin/racer"
-let g:rustfmt_autosave = 1
-
-" Syntastic
-let g:syntastic_rust_checkers = ['cargo']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-
 " Misc
 let g:SuperTabDefaultCompletionType = "context"
 let g:tagbar_autoclose = 0
-let g:vim_json_syntax_conceal = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AUTOCOMMANDS
