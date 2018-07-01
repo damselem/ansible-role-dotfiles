@@ -27,6 +27,14 @@
     - ../templates
   when: item.state == 'file'
 
+- name: Setup dotfiles target directory structure
+  file:
+    path: "{{ ansible_env.HOME }}/.{{ item.path }}"
+    state: directory
+  with_filetree:
+    - ../templates
+  when: item.state == 'directory'
+
 - name: Symlink dotfiles
   file:
     state: link
