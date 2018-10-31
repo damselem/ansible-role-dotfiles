@@ -79,21 +79,6 @@ pyenv() {
   pyenv "$@"
 }
 
-# JENV
-path_to_jenv=$(which jenv)
-if [ ! -x "$path_to_jenv" ]; then
-  PATH="$HOME/.jenv/bin:$PATH"
-fi
-if [[ ":$PATH:" != *":$HOME/.jenv/shims:"* ]]; then
-  eval "$(jenv init - --no-rehash)"
-  (jenv rehash &) 2> /dev/null
-fi
-
-# RUST
-if [[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]]; then
-  PATH=$PATH:$HOME/.cargo/bin
-fi
-
 # CUSTOM SCRIPTS
 if [[ ":$PATH:" != *":$XDG_DATA_HOME/bin:"* ]]; then
   PATH=$PATH:$XDG_DATA_HOME/bin

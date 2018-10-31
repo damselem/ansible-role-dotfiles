@@ -81,9 +81,3 @@
 
 - name: Install Tmux Plugin Manager plugins
   shell: "{{ tmux_target_dir }}/plugins/tpm/scripts/install_plugins.sh"
-
-- name: Install jenv
-  git:
-    repo: https://github.com/gcuisinier/jenv.git
-    dest: "{{ ansible_env.HOME }}/.jenv"
-  when: ansible_os_family == 'Debian'
