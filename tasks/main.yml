@@ -27,13 +27,18 @@
     - ../templates
   when: item.state == 'file'
 
-- name: Setup dotfiles target directory structure
+- name: Obtain file stats for dotfile symlinks
+  stat:
+    path: "{{ ansible_env.HOME }}/.{{ item }}"
+  with_items: "{{ dotfiles_symlinks }}"
+  register: dotfiles_dirs
+
+- name: Setup dotfiles symlinks target directory structure
   file:
-    path: "{{ ansible_env.HOME }}/.{{ item.path }}"
+    path: "{{ item.path }}"
     state: directory
-  with_filetree:
-    - ../templates
-  when: item.state == 'directory'
+  when: item.stat.isdir is defined and item.stat.isdir
+  with_items: "{{ dotfiles_dirs.results }}"
 
 - name: Symlink dotfiles
   file:
@@ -81,3 +86,4 @@
 
 - name: Install Tmux Plugin Manager plugins
   shell: "{{ tmux_target_dir }}/plugins/tpm/scripts/install_plugins.sh"
+
