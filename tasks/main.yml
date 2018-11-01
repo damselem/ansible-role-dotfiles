@@ -1,4 +1,11 @@
 ---
+- name: Verify required variables are defined
+  fail:
+    msg: "Required variable '{{ item }}' is not defined"
+  when: item is not defined
+  with_items:
+    - tmux_bin_path
+
 - name: Set primary user shell
   user:
     name: "{{ ansible_user_id }}"
@@ -86,4 +93,6 @@
 
 - name: Install Tmux Plugin Manager plugins
   shell: "{{ tmux_target_dir }}/plugins/tpm/scripts/install_plugins.sh"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ tmux_bin_path }}"
 
