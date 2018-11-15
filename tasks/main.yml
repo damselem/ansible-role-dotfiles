@@ -42,7 +42,7 @@
 
 - name: Setup dotfiles symlinks target directory structure
   file:
-    path: "{{ item.path }}"
+    path: "{{ item.stat.path }}"
     state: directory
   when: item.stat.isdir is defined and item.stat.isdir
   with_items: "{{ dotfiles_dirs.results }}"
