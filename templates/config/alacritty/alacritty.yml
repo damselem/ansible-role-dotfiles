@@ -191,15 +191,15 @@ mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
 
-  # Faux Scrollback
+  # Faux Scrolling
   #
-  # The `faux_scrollback_lines` setting controls the number
+  # The `faux_scrolling_lines` setting controls the number
   # of lines the terminal should scroll when the alternate
   # screen buffer is active. This is used to allow mouse
   # scrolling for applications like `man`.
   #
-  # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 1
+  # To disable this completely, set `faux_scrolling_lines` to 0.
+  faux_scrolling_lines: 1
 
   url:
       # URL launcher
@@ -208,12 +208,12 @@ mouse:
       # The URL is always added to the command as the last parameter.
       launcher: open
 
+  hide_when_typing: true
+
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
 dynamic_title: true
-
-hide_cursor_when_typing: false
 
 # Style of the cursor
 #
