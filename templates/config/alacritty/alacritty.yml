@@ -17,8 +17,8 @@ window:
   # Window dimensions in character columns and lines
   # (changes require restart)
   dimensions:
-    columns: 480
-    lines: 144
+    columns: 300
+    lines: 100
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.
@@ -381,3 +381,4 @@ key_bindings:
   - { key: F11,      mods: Command, chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Command, chars: "\x1b[24;3~"                  }
   - { key: NumpadEnter,             chars: "\n"                          }
+  - { key: N,        mods: Command, command: { program: "open", args: ["-nb", "io.alacritty"] } }
