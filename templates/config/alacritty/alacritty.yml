@@ -208,8 +208,6 @@ mouse:
       # The URL is always added to the command as the last parameter.
       launcher: open
 
-  hide_when_typing: true
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
