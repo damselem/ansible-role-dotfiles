@@ -73,6 +73,11 @@ if [[ ":$PATH:" != *":$HOME/.google-cloud-sdk/bin:"* ]]; then
   PATH=$PATH:$HOME/.google-cloud-sdk/bin
 fi
 
+# RUST PATH
+if [[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]]; then
+  PATH=$PATH:$HOME/.cargo/bin
+fi
+
 # PYENV - Lazy loaded
 pyenv() {
   eval "$(command pyenv init -)"
