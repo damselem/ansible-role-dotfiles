@@ -27,6 +27,9 @@ window:
     x: 2
     y: 2
 
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: false
+
   # Values for `decorations`:
   #- full: Borders and title bar
   #- none: Neither borders nor title bar
@@ -105,6 +108,9 @@ font:
 # Should display the render timer
 render_timer: false
 
+# Keep the log file after quitting Alacritty.
+persistent_logging: false
+
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
 
@@ -137,7 +143,6 @@ colors:
     cyan:    '0x93a1a1'
     white:   '0xfdf6e3'
 
-
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -146,42 +151,45 @@ colors:
 # setting the `duration` property (represented in milliseconds). You can also
 # configure the transition function by setting the `animation` property.
 #
-# Possible values for `animation`
-# `Ease`
-# `EaseOut`
-# `EaseOutSine`
-# `EaseOutQuad`
-# `EaseOutCubic`
-# `EaseOutQuart`
-# `EaseOutQuint`
-# `EaseOutExpo`
-# `EaseOutCirc`
-# `Linear`
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
 #
-# To completely disable the visual bell, set its duration to 0.
-#
+# Specifying a `duration` of `0` will disable the visual bell.
 visual_bell:
   animation: EaseOutExpo
   duration: 0
+  color: '0xffffff'
 
 # Background opacity
+#
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 1.0
 
 # Mouse bindings
 #
-# Currently doesn't support modifiers. Both the `mouse` and `action` fields must
-# be specified.
+# Available fields:
+#   - mouse
+#   - action
+#   - mods (optional)
 #
 # Values for `mouse`:
-# - Middle
-# - Left
-# - Right
-# - Numeric identifier such as `5`
+#   - Middle
+#   - Left
+#   - Right
+#   - Numeric identifier such as `5`
 #
-# Values for `action`:
-# - Paste
-# - PasteSelection
-# - Copy (TODO)
+# All available `mods` and `action` values are documented in the key binding
+# section.
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
@@ -194,36 +202,52 @@ mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
 
-  # Faux Scrolling
-  #
-  # The `faux_scrolling_lines` setting controls the number
-  # of lines the terminal should scroll when the alternate
-  # screen buffer is active. This is used to allow mouse
-  # scrolling for applications like `man`.
-  #
-  # To disable this completely, set `faux_scrolling_lines` to 0.
-  faux_scrolling_lines: 1
+   # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: false
 
   url:
-      # URL launcher
-      #
-      # This program is executed when clicking on a text which is recognized as a URL.
-      # The URL is always added to the command as the last parameter.
-      launcher: open
+    # URL launcher
+    #
+    # This program is executed when clicking on a text which is recognized as a URL.
+    # The URL is always added to the command as the last parameter.
+    #
+    # When set to `None`, URL launching will be disabled completely.
+    #
+    # Default:
+    #   - (macOS) open
+    #   - (Linux) xdg-open
+    #   - (Windows) explorer
+    #launcher:
+    #  program: xdg-open
+    #  args: []
+
+    # URL modifiers
+    #
+    # These are the modifiers that need to be held down for opening URLs when clicking
+    # on them. The available modifiers are documented in the key binding section.
+    modifiers: None
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: false
+
+# Allow terminal applications to change Alacritty's window title.
 dynamic_title: true
 
-# Style of the cursor
-#
-# Values for 'cursor_style':
-# - Block
-# - Underline
-# - Beam
 cursor:
+  # Cursor style
+  #
+  # Values for `style`:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
   style: Block
+
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
 
 # Live config reload (changes require restart)
 live_config_reload: true
