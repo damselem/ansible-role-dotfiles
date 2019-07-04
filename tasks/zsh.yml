@@ -1,0 +1,17 @@
+---
+- name: Set primary user shell
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /bin/zsh
+  become: True
+  ignore_errors: True
+
+- name: Create zgen directory
+  file:
+    path: "{{ ansible_env.HOME }}/.zgen"
+    state: directory
+
+- name: Install zgen
+  git:
+    repo: https://github.com/tarjoilija/zgen.git
+    dest: "{{ ansible_env.HOME }}/.zgen"

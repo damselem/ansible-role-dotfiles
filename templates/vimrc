@@ -84,8 +84,8 @@ vnoremap <F1> <ESC>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+={{ vim_target_dir }}
-call plug#begin('{{ vim_target_dir }}/plugged')
+set rtp+={{ vim_path }}
+call plug#begin('{{ vim_path }}/plugged')
 
 " General
 Plug 'christoomey/vim-tmux-navigator'
@@ -108,7 +108,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS - CONFIGURATION
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand("{{ vim_target_dir }}/plugged/vim-colors-solarized/colors/solarized.vim"))
+if filereadable(expand("{{ vim_path }}/plugged/vim-colors-solarized/colors/solarized.vim"))
   colorscheme solarized
 endif
 

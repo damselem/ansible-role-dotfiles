@@ -1,0 +1,23 @@
+---
+- name: Verify required variables are defined
+  fail:
+    msg: "Required variable '{{ item }}' is not defined"
+  when: item is not defined
+  with_items:
+    - dotfiles # List of dotfile templates that have to be evaluated and rendered
+
+- name: Setup dotfiles directory structure
+  file:
+    path: "{{ dotfiles_path }}/.{{ item.path }}"
+    state: directory
+  with_filetree:
+    - ../templates
+  when: item.state == 'directory'
+
+- name: Evaluate and render dotfiles templates
+  template:
+    src: "{{ item.path }}"
+    dest: "{{ dotfiles_path }}/.{{ item.path }}"
+  with_filetree:
+    - ../templates
+  when: item.state == 'file'

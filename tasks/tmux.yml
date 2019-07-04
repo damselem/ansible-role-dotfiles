@@ -1,0 +1,22 @@
+---
+- name: Verify required variables are defined
+  fail:
+    msg: "Required variable '{{ item }}' is not defined"
+  when: item is not defined
+  with_items:
+    - tmux_bin_path
+
+- name: Create Tmux plugins directory
+  file:
+    path: "{{ tmux_path }}/plugins"
+    state: directory
+
+- name: Install Tmux Plugin Manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ tmux_path }}/plugins/tpm"
+
+- name: Install Tmux Plugin Manager plugins
+  shell: "{{ tmux_path }}/plugins/tpm/scripts/install_plugins.sh"
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ tmux_bin_path }}"
