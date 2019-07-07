@@ -12,7 +12,7 @@
 [alias]
   co = checkout
 [core]
-  excludesfile = {{ dotfiles_path }}/git/gitignore
+  excludesfile = {{ xdg_config_path }}/git/ignore
   autocrlf = input
 [merge]
   tool = opendiff
