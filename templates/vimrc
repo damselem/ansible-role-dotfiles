@@ -1,10 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GENERAL
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype indent on
-filetype off
-filetype plugin on
 let mapleader="," " Leader for Vim
+filetype indent on
 set autowriteall " Autosave the file always
 set background=light " Use light background of the colorscheme
 set backspace=indent,eol,start " Allow using backspace to delete characters
@@ -71,10 +69,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
 " Map commands with capital letters for simplicity
 :command! WQ wq
 :command! Wq wq
@@ -89,15 +83,11 @@ call plug#begin('{{ vim_path }}/plugged')
 
 " General
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround'
 
 " Color scheme
 Plug 'altercation/vim-colors-solarized'
@@ -118,7 +108,6 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.DS_Store$']
 
 " Misc
-let g:SuperTabDefaultCompletionType = "context"
 let g:tagbar_autoclose = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
