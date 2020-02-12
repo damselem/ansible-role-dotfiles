@@ -16,7 +16,7 @@ set hlsearch " Highlight search matches
 set ignorecase " Case-insensitive searching
 set laststatus=2
 set lazyredraw
-set list listchars=tab:»·,trail:· " Display extra whitespace
+set listchars=trail:· " Display extra trailing whitespace
 set mouse=a "Enable mouse support
 set nobackup " Don't make backups
 set nocompatible
