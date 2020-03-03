@@ -44,6 +44,9 @@ export EDITOR=vim
 # enable colored output from ls, etc
 export CLICOLOR=1
 
+# Bat theme
+export BAT_THEME=ansi-light
+
 ########
 # PATH #
 ########
