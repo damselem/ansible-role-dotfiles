@@ -36,7 +36,7 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # Set the TMPDIR explicitly in order to make sure we can use the same
 # Tmux socket when connecting to the workstation through SSH
 # http://stackoverflow.com/questions/9039256/tmux-not-re-attaching
-export TMPDIR=/tmp
+export TMPDIR=/tmp/
 
 # Use vim as an editor
 export EDITOR=vim
